@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #6f737a;}
+.s1 { color: #ced0d6;}
+.s2 { color: #749ded;}
+.s3 { color: #ced0d6;}
+.s4 { color: #7ec482;}
+.s5 { color: #d981de;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0"># ---------------constants----------------------------------</span>
+<span class="s2">import </span><span class="s1">json</span>
+<span class="s2">from </span><span class="s1">random </span><span class="s2">import </span><span class="s1">randint</span><span class="s3">, </span><span class="s1">choice</span><span class="s3">, </span><span class="s1">shuffle</span>
+<span class="s2">from </span><span class="s1">tkinter </span><span class="s2">import </span><span class="s3">*</span>
+<span class="s2">from </span><span class="s1">tkinter </span><span class="s2">import </span><span class="s1">messagebox</span>
+
+<span class="s2">import </span><span class="s1">pyperclip</span>
+
+
+<span class="s0"># --------------------------------------------Password Generator--------------------------------</span>
+<span class="s2">def </span><span class="s1">gen_pass</span><span class="s3">():</span>
+    <span class="s1">letters </span><span class="s3">= [</span><span class="s4">'a'</span><span class="s3">, </span><span class="s4">'b'</span><span class="s3">, </span><span class="s4">'c'</span><span class="s3">, </span><span class="s4">'d'</span><span class="s3">, </span><span class="s4">'e'</span><span class="s3">, </span><span class="s4">'f'</span><span class="s3">, </span><span class="s4">'g'</span><span class="s3">, </span><span class="s4">'h'</span><span class="s3">, </span><span class="s4">'i'</span><span class="s3">, </span><span class="s4">'j'</span><span class="s3">, </span><span class="s4">'k'</span><span class="s3">, </span><span class="s4">'l'</span><span class="s3">, </span><span class="s4">'m'</span><span class="s3">, </span><span class="s4">'n'</span><span class="s3">, </span><span class="s4">'o'</span><span class="s3">, </span><span class="s4">'p'</span><span class="s3">, </span><span class="s4">'q'</span><span class="s3">, </span><span class="s4">'r'</span><span class="s3">, </span><span class="s4">'s'</span><span class="s3">, </span><span class="s4">'t'</span><span class="s3">, </span><span class="s4">'u'</span><span class="s3">,</span>
+               <span class="s4">'v'</span><span class="s3">,</span>
+               <span class="s4">'w'</span><span class="s3">, </span><span class="s4">'x'</span><span class="s3">, </span><span class="s4">'y'</span><span class="s3">, </span><span class="s4">'z'</span><span class="s3">, </span><span class="s4">'A'</span><span class="s3">, </span><span class="s4">'B'</span><span class="s3">, </span><span class="s4">'C'</span><span class="s3">, </span><span class="s4">'D'</span><span class="s3">, </span><span class="s4">'E'</span><span class="s3">, </span><span class="s4">'F'</span><span class="s3">, </span><span class="s4">'G'</span><span class="s3">, </span><span class="s4">'H'</span><span class="s3">, </span><span class="s4">'I'</span><span class="s3">, </span><span class="s4">'J'</span><span class="s3">, </span><span class="s4">'K'</span><span class="s3">, </span><span class="s4">'L'</span><span class="s3">, </span><span class="s4">'M'</span><span class="s3">, </span><span class="s4">'N'</span><span class="s3">, </span><span class="s4">'O'</span><span class="s3">, </span><span class="s4">'P'</span><span class="s3">, </span><span class="s4">'Q'</span><span class="s3">,</span>
+               <span class="s4">'R'</span><span class="s3">,</span>
+               <span class="s4">'S'</span><span class="s3">, </span><span class="s4">'T'</span><span class="s3">, </span><span class="s4">'U'</span><span class="s3">, </span><span class="s4">'V'</span><span class="s3">, </span><span class="s4">'W'</span><span class="s3">, </span><span class="s4">'X'</span><span class="s3">, </span><span class="s4">'Y'</span><span class="s3">, </span><span class="s4">'Z'</span><span class="s3">]</span>
+    <span class="s1">numbers </span><span class="s3">= [</span><span class="s4">'0'</span><span class="s3">, </span><span class="s4">'1'</span><span class="s3">, </span><span class="s4">'2'</span><span class="s3">, </span><span class="s4">'3'</span><span class="s3">, </span><span class="s4">'4'</span><span class="s3">, </span><span class="s4">'5'</span><span class="s3">, </span><span class="s4">'6'</span><span class="s3">, </span><span class="s4">'7'</span><span class="s3">, </span><span class="s4">'8'</span><span class="s3">, </span><span class="s4">'9'</span><span class="s3">]</span>
+    <span class="s1">symbols </span><span class="s3">= [</span><span class="s4">'!'</span><span class="s3">, </span><span class="s4">'#'</span><span class="s3">, </span><span class="s4">'$'</span><span class="s3">, </span><span class="s4">'%'</span><span class="s3">, </span><span class="s4">'&amp;'</span><span class="s3">, </span><span class="s4">'('</span><span class="s3">, </span><span class="s4">')'</span><span class="s3">, </span><span class="s4">'*'</span><span class="s3">, </span><span class="s4">'+'</span><span class="s3">]</span>
+
+    <span class="s1">password_list </span><span class="s3">= [</span><span class="s1">choice</span><span class="s3">(</span><span class="s1">letters</span><span class="s3">) </span><span class="s2">for </span><span class="s1">_ </span><span class="s2">in </span><span class="s1">range</span><span class="s3">(</span><span class="s1">randint</span><span class="s3">(</span><span class="s5">8</span><span class="s3">, </span><span class="s5">10</span><span class="s3">))]</span>
+    <span class="s1">numbers_list </span><span class="s3">= [</span><span class="s1">choice</span><span class="s3">(</span><span class="s1">numbers</span><span class="s3">) </span><span class="s2">for </span><span class="s1">_ </span><span class="s2">in </span><span class="s1">range</span><span class="s3">(</span><span class="s1">randint</span><span class="s3">(</span><span class="s5">2</span><span class="s3">, </span><span class="s5">4</span><span class="s3">))]</span>
+    <span class="s1">symbols_list </span><span class="s3">= [</span><span class="s1">choice</span><span class="s3">(</span><span class="s1">symbols</span><span class="s3">) </span><span class="s2">for </span><span class="s1">_ </span><span class="s2">in </span><span class="s1">range</span><span class="s3">(</span><span class="s1">randint</span><span class="s3">(</span><span class="s5">2</span><span class="s3">, </span><span class="s5">4</span><span class="s3">))]</span>
+
+    <span class="s1">password_list</span><span class="s3">.</span><span class="s1">extend</span><span class="s3">(</span><span class="s1">numbers_list</span><span class="s3">)</span>
+    <span class="s1">password_list</span><span class="s3">.</span><span class="s1">extend</span><span class="s3">(</span><span class="s1">symbols_list</span><span class="s3">)</span>
+    <span class="s1">shuffle</span><span class="s3">(</span><span class="s1">password_list</span><span class="s3">)</span>
+
+    <span class="s1">x </span><span class="s3">= </span><span class="s4">&quot;&quot;</span><span class="s3">.</span><span class="s1">join</span><span class="s3">(</span><span class="s1">password_list</span><span class="s3">)</span>
+    <span class="s1">password_entry</span><span class="s3">.</span><span class="s1">insert</span><span class="s3">(</span><span class="s1">END</span><span class="s3">, </span><span class="s1">string</span><span class="s3">=</span><span class="s4">f&quot;</span><span class="s5">{</span><span class="s1">x</span><span class="s5">}</span><span class="s4">&quot;</span><span class="s3">)</span>
+    <span class="s0"># to save to clipboard</span>
+    <span class="s1">pyperclip</span><span class="s3">.</span><span class="s1">copy</span><span class="s3">(</span><span class="s1">text</span><span class="s3">=</span><span class="s4">f&quot;</span><span class="s5">{</span><span class="s1">x</span><span class="s5">}</span><span class="s4">&quot;</span><span class="s3">)</span>
+
+
+<span class="s0"># --------------------------------Saving the password to a file------------------------------------</span>
+<span class="s2">def </span><span class="s1">save</span><span class="s3">():</span>
+    <span class="s1">website_info </span><span class="s3">= </span><span class="s1">str</span><span class="s3">(</span><span class="s1">website_entry</span><span class="s3">.</span><span class="s1">get</span><span class="s3">())</span>
+    <span class="s1">email_info </span><span class="s3">= </span><span class="s1">str</span><span class="s3">(</span><span class="s1">email_entry</span><span class="s3">.</span><span class="s1">get</span><span class="s3">())</span>
+    <span class="s1">password_info </span><span class="s3">= </span><span class="s1">str</span><span class="s3">(</span><span class="s1">password_entry</span><span class="s3">.</span><span class="s1">get</span><span class="s3">())</span>
+
+    <span class="s1">new_dict </span><span class="s3">= {</span><span class="s1">website_info</span><span class="s3">: {</span>
+        <span class="s4">&quot;email&quot;</span><span class="s3">: </span><span class="s1">email_info</span><span class="s3">,</span>
+        <span class="s4">&quot;password&quot;</span><span class="s3">: </span><span class="s1">password_info</span>
+    <span class="s3">}}</span>
+
+    <span class="s2">if </span><span class="s1">len</span><span class="s3">(</span><span class="s1">website_info</span><span class="s3">) </span><span class="s2">and </span><span class="s1">len</span><span class="s3">(</span><span class="s1">password_info</span><span class="s3">) == </span><span class="s5">0</span><span class="s3">:</span>
+        <span class="s1">messagebox</span><span class="s3">.</span><span class="s1">showinfo</span><span class="s3">(</span><span class="s1">title</span><span class="s3">=</span><span class="s4">&quot;Error&quot;</span><span class="s3">, </span><span class="s1">message</span><span class="s3">=</span><span class="s4">&quot;You need to fill the required fields&quot;</span><span class="s3">)</span>
+
+
+
+    <span class="s2">else</span><span class="s3">:</span>
+        <span class="s2">try</span><span class="s3">:</span>
+            <span class="s2">with </span><span class="s1">open</span><span class="s3">(</span><span class="s4">&quot;data.json&quot;</span><span class="s3">, </span><span class="s1">mode</span><span class="s3">=</span><span class="s4">&quot;r&quot;</span><span class="s3">) </span><span class="s2">as </span><span class="s1">data_file</span><span class="s3">:</span>
+                <span class="s0"># ========READING OLD DATA======</span>
+                <span class="s1">data </span><span class="s3">= </span><span class="s1">json</span><span class="s3">.</span><span class="s1">load</span><span class="s3">(</span><span class="s1">data_file</span><span class="s3">)</span>
+
+        <span class="s2">except </span><span class="s1">FileNotFoundError</span><span class="s3">:</span>
+            <span class="s2">with </span><span class="s1">open</span><span class="s3">(</span><span class="s4">&quot;data.json&quot;</span><span class="s3">, </span><span class="s1">mode</span><span class="s3">=</span><span class="s4">&quot;w&quot;</span><span class="s3">) </span><span class="s2">as </span><span class="s1">data_file</span><span class="s3">:</span>
+                <span class="s1">json</span><span class="s3">.</span><span class="s1">dump</span><span class="s3">(</span><span class="s1">new_dict</span><span class="s3">, </span><span class="s1">data_file</span><span class="s3">, </span><span class="s1">indent</span><span class="s3">=</span><span class="s5">4</span><span class="s3">)</span>
+
+        <span class="s2">else</span><span class="s3">:</span>
+            <span class="s0"># =========UPDATING DATA========</span>
+            <span class="s1">data</span><span class="s3">.</span><span class="s1">update</span><span class="s3">(</span><span class="s1">new_dict</span><span class="s3">)</span>
+
+            <span class="s2">with </span><span class="s1">open</span><span class="s3">(</span><span class="s4">&quot;data.json&quot;</span><span class="s3">, </span><span class="s1">mode</span><span class="s3">=</span><span class="s4">&quot;w&quot;</span><span class="s3">) </span><span class="s2">as </span><span class="s1">data_file</span><span class="s3">:</span>
+                <span class="s0"># ========SAVING UPDATED DATA===========</span>
+                <span class="s1">json</span><span class="s3">.</span><span class="s1">dump</span><span class="s3">(</span><span class="s1">data</span><span class="s3">, </span><span class="s1">data_file</span><span class="s3">, </span><span class="s1">indent</span><span class="s3">=</span><span class="s5">4</span><span class="s3">)</span>
+        <span class="s2">finally</span><span class="s3">:</span>
+            <span class="s1">website_entry</span><span class="s3">.</span><span class="s1">delete</span><span class="s3">(</span><span class="s5">0</span><span class="s3">, </span><span class="s1">END</span><span class="s3">)</span>
+            <span class="s1">password_entry</span><span class="s3">.</span><span class="s1">delete</span><span class="s3">(</span><span class="s5">0</span><span class="s3">, </span><span class="s1">END</span><span class="s3">)</span>
+
+
+<span class="s0"># ------------------------------------Search Button-----------------------------------</span>
+<span class="s2">def </span><span class="s1">find_password</span><span class="s3">():</span>
+    <span class="s1">website_info </span><span class="s3">= </span><span class="s1">website_entry</span><span class="s3">.</span><span class="s1">get</span><span class="s3">()</span>
+    <span class="s2">try</span><span class="s3">:</span>
+        <span class="s2">with </span><span class="s1">open</span><span class="s3">(</span><span class="s4">&quot;data.json&quot;</span><span class="s3">, </span><span class="s1">mode</span><span class="s3">=</span><span class="s4">&quot;r&quot;</span><span class="s3">) </span><span class="s2">as </span><span class="s1">data_file</span><span class="s3">:</span>
+            <span class="s1">data </span><span class="s3">= </span><span class="s1">json</span><span class="s3">.</span><span class="s1">load</span><span class="s3">(</span><span class="s1">data_file</span><span class="s3">)</span>
+    <span class="s2">except </span><span class="s1">FileNotFoundError</span><span class="s3">:</span>
+        <span class="s1">messagebox</span><span class="s3">.</span><span class="s1">showinfo</span><span class="s3">(</span><span class="s1">title</span><span class="s3">=</span><span class="s4">&quot;Error&quot;</span><span class="s3">, </span><span class="s1">messsage</span><span class="s3">=</span><span class="s4">&quot;No data found&quot;</span><span class="s3">)</span>
+    <span class="s2">else</span><span class="s3">:</span>
+        <span class="s2">if </span><span class="s1">data </span><span class="s3">== </span><span class="s1">website_info</span><span class="s3">:</span>
+            <span class="s1">email </span><span class="s3">= </span><span class="s1">data</span><span class="s3">[</span><span class="s1">website_info</span><span class="s3">][</span><span class="s4">&quot;email&quot;</span><span class="s3">]</span>
+            <span class="s1">password </span><span class="s3">= </span><span class="s1">data</span><span class="s3">[</span><span class="s1">website_info</span><span class="s3">][</span><span class="s4">&quot;password&quot;</span><span class="s3">]</span>
+            <span class="s1">messagebox</span><span class="s3">.</span><span class="s1">showinfo</span><span class="s3">(</span><span class="s1">title</span><span class="s3">=</span><span class="s4">f&quot;</span><span class="s5">{</span><span class="s1">website_info</span><span class="s5">}</span><span class="s4">&quot;</span><span class="s3">, </span><span class="s1">message</span><span class="s3">=</span><span class="s4">f&quot;email: </span><span class="s5">{</span><span class="s1">email</span><span class="s5">}\n</span><span class="s4">password:</span><span class="s5">{</span><span class="s1">password</span><span class="s5">}</span><span class="s4">&quot;</span><span class="s3">)</span>
+        <span class="s2">else</span><span class="s3">:</span>
+            <span class="s1">messagebox</span><span class="s3">.</span><span class="s1">showerror</span><span class="s3">(</span><span class="s1">title</span><span class="s3">=</span><span class="s4">&quot;Error&quot;</span><span class="s3">, </span><span class="s1">message</span><span class="s3">=</span><span class="s4">f&quot;no details for </span><span class="s5">{</span><span class="s1">website_info</span><span class="s5">} </span><span class="s4">exits&quot;</span><span class="s3">)</span>
+
+
+<span class="s0"># --------------------------------UI SETUP-------------------------------------------------------</span>
+<span class="s0"># window</span>
+<span class="s1">window </span><span class="s3">= </span><span class="s1">Tk</span><span class="s3">()</span>
+<span class="s1">window</span><span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s4">&quot;Password Manager&quot;</span><span class="s3">)</span>
+<span class="s1">window</span><span class="s3">.</span><span class="s1">config</span><span class="s3">(</span><span class="s1">padx</span><span class="s3">=</span><span class="s5">50</span><span class="s3">, </span><span class="s1">pady</span><span class="s3">=</span><span class="s5">50</span><span class="s3">)</span>
+
+<span class="s0"># photo image</span>
+<span class="s1">photo_image </span><span class="s3">= </span><span class="s1">PhotoImage</span><span class="s3">(</span><span class="s1">file</span><span class="s3">=</span><span class="s4">'logo.png'</span><span class="s3">)</span>
+
+<span class="s0"># canvas</span>
+<span class="s1">canvas </span><span class="s3">= </span><span class="s1">Canvas</span><span class="s3">(</span><span class="s1">width</span><span class="s3">=</span><span class="s5">200</span><span class="s3">, </span><span class="s1">height</span><span class="s3">=</span><span class="s5">200</span><span class="s3">)</span>
+<span class="s1">canvas</span><span class="s3">.</span><span class="s1">create_image</span><span class="s3">(</span><span class="s5">100</span><span class="s3">, </span><span class="s5">100</span><span class="s3">, </span><span class="s1">image</span><span class="s3">=</span><span class="s1">photo_image</span><span class="s3">)</span>
+<span class="s1">canvas</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">1</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">0</span><span class="s3">)</span>
+
+<span class="s0"># label</span>
+<span class="s1">website </span><span class="s3">= </span><span class="s1">Label</span><span class="s3">(</span><span class="s1">text</span><span class="s3">=</span><span class="s4">&quot;Website:&quot;</span><span class="s3">, </span><span class="s1">font</span><span class="s3">=(</span><span class="s4">&quot;aries&quot;</span><span class="s3">, </span><span class="s5">13</span><span class="s3">, </span><span class="s4">&quot;normal&quot;</span><span class="s3">))</span>
+<span class="s1">website</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">0</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">1</span><span class="s3">)</span>
+
+<span class="s1">email </span><span class="s3">= </span><span class="s1">Label</span><span class="s3">(</span><span class="s1">text</span><span class="s3">=</span><span class="s4">&quot;Email/Username:&quot;</span><span class="s3">, </span><span class="s1">font</span><span class="s3">=(</span><span class="s4">&quot;aries&quot;</span><span class="s3">, </span><span class="s5">13</span><span class="s3">, </span><span class="s4">&quot;normal&quot;</span><span class="s3">))</span>
+<span class="s1">email</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">0</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">2</span><span class="s3">)</span>
+
+<span class="s1">password </span><span class="s3">= </span><span class="s1">Label</span><span class="s3">(</span><span class="s1">text</span><span class="s3">=</span><span class="s4">&quot;Password:&quot;</span><span class="s3">, </span><span class="s1">font</span><span class="s3">=(</span><span class="s4">&quot;aries&quot;</span><span class="s3">, </span><span class="s5">13</span><span class="s3">, </span><span class="s4">&quot;normal&quot;</span><span class="s3">))</span>
+<span class="s1">password</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">0</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">3</span><span class="s3">)</span>
+
+<span class="s0"># entry</span>
+<span class="s1">website_entry </span><span class="s3">= </span><span class="s1">Entry</span><span class="s3">(</span><span class="s1">width</span><span class="s3">=</span><span class="s5">36</span><span class="s3">)</span>
+<span class="s1">website_entry</span><span class="s3">.</span><span class="s1">focus</span><span class="s3">()</span>
+<span class="s1">website_entry</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">1</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">1</span><span class="s3">, </span><span class="s1">columnspan</span><span class="s3">=</span><span class="s5">2</span><span class="s3">)</span>
+
+<span class="s1">email_entry </span><span class="s3">= </span><span class="s1">Entry</span><span class="s3">(</span><span class="s1">width</span><span class="s3">=</span><span class="s5">36</span><span class="s3">)</span>
+<span class="s1">email_entry</span><span class="s3">.</span><span class="s1">insert</span><span class="s3">(</span><span class="s1">END</span><span class="s3">, </span><span class="s1">string</span><span class="s3">=</span><span class="s4">&quot;ogunbanjotosin106@gmail.com&quot;</span><span class="s3">)</span>
+<span class="s1">email_entry</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">1</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">2</span><span class="s3">, </span><span class="s1">columnspan</span><span class="s3">=</span><span class="s5">2</span><span class="s3">)</span>
+
+<span class="s1">password_entry </span><span class="s3">= </span><span class="s1">Entry</span><span class="s3">(</span><span class="s1">width</span><span class="s3">=</span><span class="s5">21</span><span class="s3">)</span>
+<span class="s1">password_entry</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">1</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">3</span><span class="s3">)</span>
+<span class="s0"># button</span>
+<span class="s1">generate_password </span><span class="s3">= </span><span class="s1">Button</span><span class="s3">(</span><span class="s1">text</span><span class="s3">=</span><span class="s4">&quot;Generate Password&quot;</span><span class="s3">, </span><span class="s1">command</span><span class="s3">=</span><span class="s1">gen_pass</span><span class="s3">)</span>
+<span class="s1">generate_password</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">2</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">3</span><span class="s3">)</span>
+
+<span class="s1">add </span><span class="s3">= </span><span class="s1">Button</span><span class="s3">(</span><span class="s1">text</span><span class="s3">=</span><span class="s4">&quot;Add&quot;</span><span class="s3">, </span><span class="s1">width</span><span class="s3">=</span><span class="s5">31</span><span class="s3">, </span><span class="s1">command</span><span class="s3">=</span><span class="s1">save</span><span class="s3">)</span>
+<span class="s1">add</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">1</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">4</span><span class="s3">, </span><span class="s1">columnspan</span><span class="s3">=</span><span class="s5">2</span><span class="s3">)</span>
+
+<span class="s1">search </span><span class="s3">= </span><span class="s1">Button</span><span class="s3">(</span><span class="s1">text</span><span class="s3">=</span><span class="s4">&quot;Search&quot;</span><span class="s3">, </span><span class="s1">width</span><span class="s3">=</span><span class="s5">13</span><span class="s3">, </span><span class="s1">command</span><span class="s3">=</span><span class="s1">find_password</span><span class="s3">)</span>
+<span class="s1">search</span><span class="s3">.</span><span class="s1">grid</span><span class="s3">(</span><span class="s1">column</span><span class="s3">=</span><span class="s5">3</span><span class="s3">, </span><span class="s1">row</span><span class="s3">=</span><span class="s5">1</span><span class="s3">)</span>
+<span class="s0"># window mainloop</span>
+<span class="s1">window</span><span class="s3">.</span><span class="s1">mainloop</span><span class="s3">()</span>
+</pre>
+</body>
+</html>
